@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111827">
+  <title>Delivery Mileage Tracker</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><h1>Delivery Mileage Tracker</h1><p>Track driving and deliveries</p></header>
+<main>
+  <section class="card">
+    <h2>Current trip</h2>
+    <div id="tripStatus" class="status">No trip running</div>
+    <div class="grid">
+      <label>Start odometer (km)<input id="startOdo" type="number" min="0" step="0.1" placeholder="e.g. 125430"></label>
+      <label>End odometer (km)<input id="endOdo" type="number" min="0" step="0.1" placeholder="e.g. 125510"></label>
+    </div>
+    <div class="buttons">
+      <button id="startTrip">Start trip</button>
+      <button id="finishTrip" class="secondary" disabled>Finish trip</button>
+    </div>
+    <p id="tripResult"></p>
+  </section>
+
+  <section class="card">
+    <h2>Add delivery</h2>
+    <div class="grid">
+      <label>Delivery / order #<input id="deliveryName" placeholder="e.g. Order 1042"></label>
+      <label>Distance (km)<input id="deliveryKm" type="number" min="0" step="0.1" placeholder="Optional"></label>
+      <label>Notes<textarea id="deliveryNotes" rows="2" placeholder="Optional"></textarea></label>
+    </div>
+    <button id="addDelivery">Add delivery</button>
+  </section>
+
+  <section class="card">
+    <h2>Totals</h2>
+    <div class="totals">
+      <div><strong id="todayKm">0</strong><span>Today (km)</span></div>
+      <div><strong id="weekKm">0</strong><span>This week (km)</span></div>
+      <div><strong id="deliveryCount">0</strong><span>Deliveries</span></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="row"><h2>History</h2><button id="clearAll" class="danger small">Clear</button></div>
+    <div id="history" class="history">No records yet.</div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

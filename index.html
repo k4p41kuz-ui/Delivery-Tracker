@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123b32"><title>DriveTrack</title>
+<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header><div class="brand-mark">DT</div><div><h1>DriveTrack</h1><p>Customers · GPS · Driving records</p></div></header>
+<nav>
+<button class="nav active" data-tab="dashboard">Dashboard</button><button class="nav" data-tab="customers">Customers</button><button class="nav" data-tab="history">Trip history</button>
+</nav>
+<main>
+<section id="dashboard" class="tab-panel">
+<div class="hero"><div><span class="eyebrow">CURRENT TRIP</span><h2 id="tripStatus">Ready to drive</h2><p id="gpsStatus">GPS not started</p></div><div class="gps-dot" id="gpsDot"></div></div>
+<div class="stats"><div class="stat"><span>Distance</span><strong id="distance">0.00 km</strong></div><div class="stat"><span>Elapsed</span><strong id="elapsed">00:00:00</strong></div><div class="stat"><span>GPS points</span><strong id="pointCount">0</strong></div></div>
+<div class="actions"><button id="startBtn" class="primary">▶ Start trip</button><button id="stopBtn" class="danger" disabled>■ Stop & save</button></div>
+<div class="panel"><h3>Current location</h3><p id="coords">Coordinates will appear when GPS starts.</p><p id="nearest">No destination matched yet.</p><button id="matchBtn" class="secondary" disabled>Find nearby customer</button></div>
+<div class="panel"><h3>Map</h3><p class="muted">Open the current GPS position or saved destination in your map app.</p><button id="mapBtn" class="secondary" disabled>Open current position in Maps</button><div id="routeSummary" class="muted small">Route points are recorded while tracking is active.</div></div>
+<div class="notice">Keep DriveTrack open while recording. On iPhone, browser GPS tracking may pause when the screen locks or the browser is in the background.</div>
+</section>
+<section id="customers" class="tab-panel hidden">
+<div class="section-heading"><div><h2>Customers</h2><p class="muted">Addresses, delivery notes and destination coordinates</p></div><button id="newCustomerBtn" class="primary">+ Add</button></div>
+<input id="customerSearch" class="search" placeholder="Find by name, address, notes…">
+<div class="toolbar"><button id="importBtn" class="secondary">Import CSV</button><button id="exportCustomersBtn" class="secondary">Export CSV</button><input id="csvFile" type="file" accept=".csv,text/csv" hidden></div>
+<div id="customerList" class="list"></div>
+<form id="customerForm" class="panel hidden">
+<h3 id="formTitle">Add customer</h3><input type="hidden" id="customerId">
+<label>Customer name *<input id="customerName" required></label>
+<label>Address *<input id="customerAddress" required placeholder="Street, suburb, city"></label>
+<label>Phone (optional)<input id="customerPhone" type="tel"></label>
+<label>Notes / delivery instructions<textarea id="customerNotes" rows="3" placeholder="Gate code, safe place, contact instructions…"></textarea></label>
+<div class="two"><label>Latitude<input id="customerLat" type="number" step="any" placeholder="-36.8485"></label><label>Longitude<input id="customerLng" type="number" step="any" placeholder="174.7633"></label></div>
+<p class="muted small">Coordinates are optional. You can capture them when you are physically at the destination using the button below.</p>
+<div class="actions"><button type="button" id="captureCustomerGps" class="secondary">Use my GPS</button><button type="submit" class="primary">Save customer</button><button type="button" id="cancelCustomer" class="secondary">Cancel</button></div>
+</form>
+</section>
+<section id="history" class="tab-panel hidden"><div class="section-heading"><div><h2>Trip history</h2><p class="muted">Saved trip distances, times and GPS points</p></div><button id="exportTripsBtn" class="secondary">Export CSV</button></div><div id="tripList" class="list"></div></section>
+</main>
+<footer>DriveTrack · Your records are stored in this browser on this device.</footer>
+<script src="app.js"></script>
+</body></html>
